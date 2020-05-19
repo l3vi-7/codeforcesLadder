@@ -7,60 +7,20 @@ using namespace std;
 #define REP(i, a, b) for(int i = a; i < b; i++)
 
 void dfs(vector <string> &chessBoard, int n, int m) {
-    vector <bool> flag(2, false);
     for (int i = 0; i < n; i++) {
-        char lastSet = 'k';
         for (int j = 0; j < m; j++) {
-            
-            if (i == 0 && j == 0 && chessBoard[i][j] == '.')
-                chessBoard[i][j] = 'B';
             if (chessBoard[i][j] == '.') {
-                flag[0] = false;
-                flag[1] = false;
-                if (i - 1 >= 0) {
-                    if (chessBoard[i - 1][j] == 'B')
-                        flag[0] = true;
-                    else if (chessBoard[i - 1][j] == 'W')
-                        flag[1] = true;
-                } 
-                if (j - 1 >= 0) {
-                    if (chessBoard[i][j-1] == 'B')
-                        flag[0] = true;
-                    else if (chessBoard[i][j-1] == 'W')
-                        flag[1] = true;
-                }
-                if (i + 1 <= n - 1) {
-                    if (chessBoard[i + 1][j] == 'B')
-                        flag[0] = true;
-                    else if (chessBoard[i + 1][j] == 'W')
-                        flag[1] = true;
-                }
-                if (j + 1 <= m - 1) {
-                    if (chessBoard[i][j + 1] == 'B')
-                        flag[0] = true;
-                    else if (chessBoard[i][j + 1] == 'W')
-                        flag[1] = true;
-                }
-
-                if (!flag[0]) {
-                    if (lastSet == 'k' || lastSet == 'W'){
+                if ((i + j) % 2 == 0)
                     chessBoard[i][j] = 'B';
-                    lastSet = 'B';
-                    }
-                }
-                else if (!flag[1])
-                    if (lastSet == 'k' || lastSet == 'B'){
+                else
                     chessBoard[i][j] = 'W';
-                    lastSet = 'W';
-                    }
             }
         }
     }
     
 }
 
-int main()
-{
+int main() {
     IOS;
     int n, m;
     cin >> n >> m;
@@ -69,15 +29,6 @@ int main()
     for (int i = 0; i < n; i++)
         cin >> chessBoard[i];
 
-    dfs(chessBoard, n, m);
-    dfs(chessBoard, n, m);
-    dfs(chessBoard, n, m);
-    dfs(chessBoard, n, m);
-    dfs(chessBoard, n, m);
-    dfs(chessBoard, n, m);
-    dfs(chessBoard, n, m);
-    dfs(chessBoard, n, m);
-    dfs(chessBoard, n, m);
     dfs(chessBoard, n, m);
 
     for (auto i : chessBoard) {
