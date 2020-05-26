@@ -1,2 +1,2 @@
 # codeforcesLadder
-Practise codes from a20j codeforces laddrr
+Practise codes from a20j codeforces ladder
